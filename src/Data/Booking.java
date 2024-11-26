@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 // Booking class
-public class Booking {
+public abstract class Booking {
     private int bookingId; // Booking number
     private int vehicleId; // Vehicle number
     private int custNo; // Customer number
@@ -23,4 +23,15 @@ public class Booking {
         this.returnTime = returnTime;
         this.pickUpLocation = pickUpLocation;
     }
+
+    @Override
+    public String toString() {
+        return "Booking ID: " + bookingId
+                + "\nVehicle ID: " + vehicleId
+                + "\nCustomer Number: " + custNo
+                + "\nPick up date: " + pickUpDate + " at " + pickUpTime
+                + "\nReturn date: " + returnDate + " at " + returnTime
+                + "\nPick up location: " + pickUpLocation;
+    }
+
 }

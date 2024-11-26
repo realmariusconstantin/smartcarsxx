@@ -7,4 +7,9 @@ public class Customer extends Person{
         super(firstname, lastname, email, address);
         this.custNo = custNo; // Set the customer number
     }
+
+    @Override
+    public String toString() {
+        return "Customer: " +  custNo + "\n" + super.toString();
+    }
 }

@@ -12,4 +12,12 @@ public abstract class Person {
         this.email = email;
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "firstname: " + firstname + "\n" +
+                "lastname: " + lastname + "\n" +
+                "email: " + email + "\n" +
+                "address: " + address + "\n";
+    }
 }

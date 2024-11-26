@@ -7,4 +7,8 @@ public class Employee extends Person{
         super(firstname, lastname, email, address);
         this.empNo = empNo; // Set the employee number
     }
+    @Override
+    public String toString() {
+        return "Employee " +  empNo + "\n" + super.toString();
+    }
 }
