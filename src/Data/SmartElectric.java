@@ -1,5 +1,5 @@
 package Data;
-import Data.Vehicle;
+
 import java.time.LocalDate;
 
 public class SmartElectric extends Vehicle {
@@ -10,10 +10,10 @@ public class SmartElectric extends Vehicle {
     private int efficiency; //Efficiency in Wh/km
 
     public SmartElectric(int id, String regNo, String manufacturer, String model, LocalDate regDate, String location, double battery, int range, int efficiency) {
-        super(id, regNo, manufacturer, model, regDate, location); //Call to the superclass constructor
-        this.battery = battery; //kWh
-        this.range = range; //km
-        this.efficiency = efficiency; //Wh/km
+        super(id, regNo, manufacturer, model, regDate, location);
+        this.battery = battery;
+        this.range = range;
+        this.efficiency = efficiency;
     }
 
     @Override

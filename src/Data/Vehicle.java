@@ -9,15 +9,18 @@ public abstract class Vehicle {
     private String manufacturer; //Manufacturer of the vehicle
     private LocalDate regDate; //Registration date
     private String location; //Location of the vehicle
+    private String vehicleTypes; //Type of vehicle
 
-    public Vehicle(int id, String model, String regNo, String manufacturer, LocalDate regDate, String location) { //Constructor
+    public Vehicle( int id, String model, String regNo, String manufacturer, LocalDate regDate, String location) { //Constructor
         this.id = id;
         this.model = model;
         this.regNo = regNo;
         this.manufacturer = manufacturer;
         this.regDate = regDate;
-        this.location = location;
+        this.location = location;;
     }
+
+
 
 
     //Different for each type of vehicle
@@ -25,8 +28,12 @@ public abstract class Vehicle {
 
     public String toString(){
         return "vehicle ID: " + id
+                + "\nType: " + vehicleTypes
                 + "\nRegistration: " + regNo + " registered on " + regDate
-                + "\nModel: " + manufacturer + " " + model
-                + "\nLocation " + location;
+                + "\nModel: "  + model
+                + "\nManufacturer: " + manufacturer
+                + "\nLocation: " + location;
+
+
     }
 }
