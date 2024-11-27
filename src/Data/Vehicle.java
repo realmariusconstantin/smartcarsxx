@@ -36,4 +36,8 @@ public abstract class Vehicle {
 
 
     }
+
+    public int getId() {
+        return id;
+    }
 }

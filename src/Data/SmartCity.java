@@ -10,7 +10,8 @@ public class SmartCity extends Petrol{
      super(id, model, regNo, manufacturer, regDate, location, engine, co2);
  }
 
- @Override
+
+    @Override
     public double calculateRate(int hours, int km) {//Method to calculate the rate
         double rate = (hours <= 24) ? hours * HOURLY_RATE : DAILY_RATE; //Calculates the base rate based on the number of hours
         return rate + (km > 50 ? (km - 50) * 0.25 : 0); //Adds an additional charge if the distance is greater than 50 km
