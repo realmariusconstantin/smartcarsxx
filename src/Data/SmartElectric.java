@@ -1,6 +1,7 @@
 package Data;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class SmartElectric extends Vehicle {
     private static final double HOURLY_RATE = 14;//Hourly rate in euros
@@ -9,8 +10,8 @@ public class SmartElectric extends Vehicle {
     private int range; //Range in km
     private int efficiency; //Efficiency in Wh/km
 
-    public SmartElectric(int id, String regNo, String manufacturer, String model, LocalDate regDate, String location, double battery, int range, int efficiency) {
-        super(id, regNo, manufacturer, model, regDate, location);
+    public SmartElectric(int id, String regNo, String manufacturer, String model, LocalDate regDate, String[] location, double battery, int range, int efficiency) {
+        super(id, regNo, manufacturer, model, regDate, Arrays.toString(location));
         this.battery = battery;
         this.range = range;
         this.efficiency = efficiency;

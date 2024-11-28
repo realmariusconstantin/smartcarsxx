@@ -7,7 +7,7 @@ public class SmartVan extends Petrol{
     private static final double DAILY_RATE = 85; //Daily rate
 
 
-    public SmartVan(int id, String model, String regNo, String manufacturer, LocalDate regDate, String location, double engine, int co2) {//Constructor
+    public SmartVan(int id, String model, String regNo, String manufacturer, LocalDate regDate, String[]location, double engine, int co2) {//Constructor
         super(id, model, regNo, manufacturer, regDate, location, engine, co2); //Constructor
     }
 

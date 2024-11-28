@@ -11,4 +11,12 @@ public class Employee extends Person{
     public String toString() {
         return "Employee " +  empNo + "\n" + super.toString();
     }
+
+    public int getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(int empNo) {
+        this.empNo = empNo;
+    }
 }

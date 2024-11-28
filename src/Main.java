@@ -75,12 +75,15 @@ public class Main {
             int vehicleId = Integer.parseInt(JOptionPane.showInputDialog("Enter the ID of the City vehicle you want to book")); // Get the ID of the vehicle
             for (Vehicle vehicle : cityVehicles) {
                 if (vehicle.getId() == vehicleId) {
-                    int custNo = Integer.parseInt(JOptionPane.showInputDialog("Enter your customer number")); // Get the customer number
-                    LocalDate pickUpDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the pick up date (yyyy-mm-dd)")); // Get the pick up date
-                    LocalTime pickUpTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the pick up time (hh:mm)")); // Get the pick up time
-                    LocalDate returnDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the return date (yyyy-mm-dd)")); // Get the return date
-                    LocalTime returnTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the return time (hh:mm)")); // Get the return time
-                    String pickUpLocation = JOptionPane.showInputDialog("Enter the pick up location"); // Get the pick up location
+                    try {
+                        int custNo = Integer.parseInt(JOptionPane.showInputDialog("Enter your customer number")); // Get the customer number
+
+                        LocalDate pickUpDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the pick up date (yyyy-mm-dd)")); // Get the pick up date
+                        LocalTime pickUpTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the pick up time (hh:mm)")); // Get the pick up time
+                        LocalDate returnDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the return date (yyyy-mm-dd)")); // Get the return date
+                        LocalTime returnTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the return time (hh:mm)")); // Get the return time
+                        String pickUpLocation = JOptionPane.showInputDialog("Enter the pick up location"); // Get the pick up location
+
                     int bookingId = bookings.size() + 1; // Generate a booking number
                     double rate = vehicle.calculateRate((int) Duration.between(LocalDateTime.of(pickUpDate, pickUpTime), LocalDateTime.of(returnDate, returnTime)).toHours(), 0); // Calculate the rate
                     Booking booking = new Booking(bookingId, vehicleId, custNo, pickUpDate, pickUpTime, returnDate, returnTime, pickUpLocation, rate); // Create a new booking object
@@ -88,6 +91,10 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Booking successful"); // Display a message to confirm the booking has been added
                     System.out.println(bookings);
                     return;
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Invalid input" , "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
             JOptionPane.showMessageDialog(null, "Vehicle not found"); // Display a message if the vehicle is not found
@@ -95,39 +102,51 @@ public class Main {
             int vehicleId = Integer.parseInt(JOptionPane.showInputDialog("Enter the ID of the Tripper vehicle you want to book")); // Get the ID of the vehicle
             for (Vehicle vehicle : tripperVehicles) {
                 if (vehicle.getId() == vehicleId) {
-                    int custNo = Integer.parseInt(JOptionPane.showInputDialog("Enter your customer number")); // Get the customer number
-                    LocalDate pickUpDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the pick up date (yyyy-mm-dd)")); // Get the pickup date
-                    LocalTime pickUpTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the pick up time (hh:mm)")); // Get the pickup time
-                    LocalDate returnDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the return date (yyyy-mm-dd)")); // Get the return date
-                    LocalTime returnTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the return time (hh:mm)")); // Get the return time
-                    String pickUpLocation = JOptionPane.showInputDialog("Enter the pick up location"); // Get the pickup location
-                    int bookingId = bookings.size() + 1; // Generate a booking number
-                    double rate = vehicle.calculateRate((int) Duration.between(LocalDateTime.of(pickUpDate, pickUpTime), LocalDateTime.of(returnDate, returnTime)).toHours(), 0); // Calculate the rate
-                    Booking booking = new Booking(bookingId, vehicleId, custNo, pickUpDate, pickUpTime, returnDate, returnTime, pickUpLocation, rate); // Create a new booking object
-                    bookings.add(booking); // Add the booking to the array list
-                    JOptionPane.showMessageDialog(null, "Booking successful"); // Display a message to confirm the booking has been added
-                    System.out.println(bookings);
-                    return;
+                    try {
+                        int custNo = Integer.parseInt(JOptionPane.showInputDialog("Enter your customer number")); // Get the customer number
+                        LocalDate pickUpDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the pick up date (yyyy-mm-dd)")); // Get the pickup date
+                        LocalTime pickUpTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the pick up time (hh:mm)")); // Get the pickup time
+                        LocalDate returnDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the return date (yyyy-mm-dd)")); // Get the return date
+                        LocalTime returnTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the return time (hh:mm)")); // Get the return time
+                        String pickUpLocation = JOptionPane.showInputDialog("Enter the pick up location"); // Get the pickup location
+                        int bookingId = bookings.size() + 1; // Generate a booking number
+                        double rate = vehicle.calculateRate((int) Duration.between(LocalDateTime.of(pickUpDate, pickUpTime), LocalDateTime.of(returnDate, returnTime)).toHours(), 0); // Calculate the rate
+                        Booking booking = new Booking(bookingId, vehicleId, custNo, pickUpDate, pickUpTime, returnDate, returnTime, pickUpLocation, rate); // Create a new booking object
+                        bookings.add(booking); // Add the booking to the array list
+                        JOptionPane.showMessageDialog(null, "Booking successful"); // Display a message to confirm the booking has been added
+                        System.out.println(bookings);
+                        return;
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Invalid input" , "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
+
+
             JOptionPane.showMessageDialog(null, "Vehicle not found"); // Display a message if the vehicle is not found
         } else if (choice == 2) {
             int vehicleId = Integer.parseInt(JOptionPane.showInputDialog("Enter the ID of the Electric vehicle you want to book")); // Get the ID of the vehicle
             for (Vehicle vehicle : electricVehicles) {
                 if (vehicle.getId() == vehicleId) {
-                    int custNo = Integer.parseInt(JOptionPane.showInputDialog("Enter your customer number")); // Get the customer number
-                    LocalDate pickUpDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the pick up date (yyyy-mm-dd)")); // Get the pick up date
-                    LocalTime pickUpTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the pick up time (hh:mm)")); // Get the pick up time
-                    LocalDate returnDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the return date (yyyy-mm-dd)")); // Get the return date
-                    LocalTime returnTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the return time (hh:mm)")); // Get the return time
-                    String pickUpLocation = JOptionPane.showInputDialog("Enter the pick up location"); // Get the pick up location
-                    int bookingId = bookings.size() + 1; // Generate a booking number
-                    double rate = vehicle.calculateRate((int) Duration.between(LocalDateTime.of(pickUpDate, pickUpTime), LocalDateTime.of(returnDate, returnTime)).toHours(), 0); // Calculate the rate
-                    Booking booking = new Booking(bookingId, vehicleId, custNo, pickUpDate, pickUpTime, returnDate, returnTime, pickUpLocation, rate); // Create a new booking object
-                    bookings.add(booking); // Add the booking to the array list
-                    JOptionPane.showMessageDialog(null, "Booking successful"); // Display a message to confirm the booking has been added
-                    System.out.println(bookings);
-                    return;
+                    try {
+                        int custNo = Integer.parseInt(JOptionPane.showInputDialog("Enter your customer number")); // Get the customer number
+                        LocalDate pickUpDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the pick up date (yyyy-mm-dd)")); // Get the pick up date
+                        LocalTime pickUpTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the pick up time (hh:mm)")); // Get the pick up time
+                        LocalDate returnDate = LocalDate.parse(JOptionPane.showInputDialog("Enter the return date (yyyy-mm-dd)")); // Get the return date
+                        LocalTime returnTime = LocalTime.parse(JOptionPane.showInputDialog("Enter the return time (hh:mm)")); // Get the return time
+                        String pickUpLocation = JOptionPane.showInputDialog("Enter the pick up location"); // Get the pick up location
+                        int bookingId = bookings.size() + 1; // Generate a booking number
+                        double rate = vehicle.calculateRate((int) Duration.between(LocalDateTime.of(pickUpDate, pickUpTime), LocalDateTime.of(returnDate, returnTime)).toHours(), 0); // Calculate the rate
+                        Booking booking = new Booking(bookingId, vehicleId, custNo, pickUpDate, pickUpTime, returnDate, returnTime, pickUpLocation, rate); // Create a new booking object
+                        bookings.add(booking); // Add the booking to the array list
+                        JOptionPane.showMessageDialog(null, "Booking successful"); // Display a message to confirm the booking has been added
+                        System.out.println(bookings);
+                        return;
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Invalid input", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
             JOptionPane.showMessageDialog(null, "Vehicle not found"); // Display a message if the vehicle is not found
@@ -157,7 +176,6 @@ public class Main {
 
 
     }
-
 
     private static void Signup() {
         String firstname = JOptionPane.showInputDialog("Enter your first name"); // Get the first name of the customer
@@ -197,15 +215,41 @@ public class Main {
     }
 
     private static void viewEmployees() {
+        for (Employee employee : employees) {
+            JOptionPane.showMessageDialog(null, employee); // Display the employee
+        }
     }
 
     private static void removeEmployee() {
+        int empNo = Integer.parseInt(JOptionPane.showInputDialog("Enter the employee number you want to remove")); // Get the employee number
+        for (Employee employee : employees) {
+            if (employee.getEmpNo() == empNo) {
+                employees.remove(employee); // Remove the employee from the array list
+                JOptionPane.showMessageDialog(null, "Employee removed successfully"); // Display a message to confirm the employee has been removed
+                System.out.println(employees);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Employee not found"); // Display a message if the employee is not found
     }
 
     private static void addEmployee() {
+        String firstname = JOptionPane.showInputDialog("Enter the first name of the employee"); // Get the first name of the employee
+        String lastname = JOptionPane.showInputDialog("Enter the last name of the employee"); // Get the last name of the employee
+        String email = JOptionPane.showInputDialog("Enter the email address of the employee"); // Get the email address of the employee
+        String address = JOptionPane.showInputDialog("Enter the address of the employee"); // Get the address of the employee
+        int empNo = employees.size() + 1; // Generate an employee number
+        JOptionPane.showMessageDialog(null, "Employee added successfully"); // Display a message to confirm the employee has been added
+
+        Employee employee = new Employee(firstname, lastname, email, address, empNo); // Create a new employee object
+        employees.add(employee); // Add the employee to the array list
+        System.out.println(employees);
     }
 
     private static void viewbookings() {
+        for (Booking booking : bookings) {
+            JOptionPane.showMessageDialog(null, booking); // Display the booking
+        }
     }
 
     private static void removeVehicle() {
@@ -233,8 +277,20 @@ public class Main {
                 String model = JOptionPane.showInputDialog("Enter the model of the City vehicle"); // Get the model of the vehicle
                 String regNo = JOptionPane.showInputDialog("Enter the registration number of the City vehicle"); // Get the registration number of the vehicle
                 String manufacturer = JOptionPane.showInputDialog("Enter the manufacturer of the City vehicle"); // Get the manufacturer of the vehicle
-                String location = JOptionPane.showInputDialog("Enter the location of the City vehicle"); // Get the location of the vehicle
-                SmartCity vehicle = new SmartCity(id, model, regNo, manufacturer, LocalDate.now(), location, 1.0, 100); // Create a new vehicle object
+                String[] location = {"Nenagh", "Limerick", "Ennis", "Shannon", "Foynes"}; // Get the location of the vehicle
+                int LocationChoice = JOptionPane.showOptionDialog(null, "Select a location", "Add Vehicle",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, location, location[0]); // Display the vehicle types
+                switch (LocationChoice) {
+                    case 0 -> JOptionPane.showMessageDialog(null, "Nenagh selected");
+                    case 1 -> JOptionPane.showMessageDialog(null, "Limerick selected");
+                    case 2 -> JOptionPane.showMessageDialog(null, "Ennis selected");
+                    case 3 -> JOptionPane.showMessageDialog(null, "Shannon selected");
+                    case 4 -> JOptionPane.showMessageDialog(null, "Foynes selected");
+                    default -> JOptionPane.showMessageDialog(null, "Invalid option selected");
+                }
+                double engine = Double.parseDouble(JOptionPane.showInputDialog("Enter the engine size of the City vehicle")); // Get the engine size of the vehicle
+                int co2 = Integer.parseInt(JOptionPane.showInputDialog("Enter the CO2 emissions of the City vehicle")); // Get the CO2 emissions of the vehicle
+                SmartCity vehicle = new SmartCity(id, model, regNo, manufacturer, LocalDate.now(), location, engine, co2); // Create a new vehicle object
                 cityVehicles.add(vehicle); // Add the vehicle to the cityVehicles list
                 JOptionPane.showMessageDialog(null, "City Vehicle added successfully"); // Display a message to confirm the vehicle has been added
                 System.out.println(cityVehicles);
@@ -245,8 +301,20 @@ public class Main {
                 String model = JOptionPane.showInputDialog("Enter the model of the Tripper vehicle"); // Get the model of the vehicle
                 String regNo = JOptionPane.showInputDialog("Enter the registration number of the Tripper vehicle"); // Get the registration number of the vehicle
                 String manufacturer = JOptionPane.showInputDialog("Enter the manufacturer of the Tripper vehicle"); // Get the manufacturer of the vehicle
-                String location = JOptionPane.showInputDialog("Enter the location of the Tripper vehicle"); // Get the location of the vehicle
-                SmartTripper vehicle = new SmartTripper(id, model, regNo, manufacturer, LocalDate.now(), location, 1.0, 100); // Create a new vehicle object
+                String[] location = {"Nenagh", "Limerick", "Ennis", "Shannon", "Foynes"}; // Get the location of the vehicle
+                int LocationChoice = JOptionPane.showOptionDialog(null, "Select a location", "Add Vehicle",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, location, location[0]); // Display the vehicle types
+                switch (LocationChoice) {
+                    case 0 -> JOptionPane.showMessageDialog(null, "Nenagh selected");
+                    case 1 -> JOptionPane.showMessageDialog(null, "Limerick selected");
+                    case 2 -> JOptionPane.showMessageDialog(null, "Ennis selected");
+                    case 3 -> JOptionPane.showMessageDialog(null, "Shannon selected");
+                    case 4 -> JOptionPane.showMessageDialog(null, "Foynes selected");
+                    default -> JOptionPane.showMessageDialog(null, "Invalid option selected");
+                }
+                double engine = Double.parseDouble(JOptionPane.showInputDialog("Enter the engine size of the City vehicle")); // Get the engine size of the vehicle
+                int co2 = Integer.parseInt(JOptionPane.showInputDialog("Enter the CO2 emissions of the City vehicle")); // Get the CO2 emissions of the vehicle
+                SmartTripper vehicle = new SmartTripper(id, model, regNo, manufacturer, LocalDate.now(), location, engine, co2); // Create a new vehicle object
                 tripperVehicles.add(vehicle); // Add the vehicle to the tripperVehicles list
                 JOptionPane.showMessageDialog(null, "Tripper Vehicle added successfully"); // Display a message to confirm the vehicle has been added
                 System.out.println(tripperVehicles);
@@ -257,8 +325,21 @@ public class Main {
                 String model = JOptionPane.showInputDialog("Enter the model of the Electric vehicle"); // Get the model of the vehicle
                 String regNo = JOptionPane.showInputDialog("Enter the registration number of the Electric vehicle"); // Get the registration number of the vehicle
                 String manufacturer = JOptionPane.showInputDialog("Enter the manufacturer of the Electric vehicle"); // Get the manufacturer of the vehicle
-                String location = JOptionPane.showInputDialog("Enter the location of the Electric vehicle"); // Get the location of the vehicle
-                SmartElectric vehicle = new SmartElectric(id, regNo, manufacturer, model, LocalDate.now(), location, 1.0, 100, 100); // Create a new vehicle object
+                String[] location = {"Nenagh", "Limerick", "Ennis", "Shannon", "Foynes"}; // Get the location of the vehicle
+                int LocationChoice = JOptionPane.showOptionDialog(null, "Select a location", "Add Vehicle",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, location, location[0]); // Display the vehicle types
+                switch (LocationChoice) {
+                    case 0 -> JOptionPane.showMessageDialog(null, "Nenagh selected");
+                    case 1 -> JOptionPane.showMessageDialog(null, "Limerick selected");
+                    case 2 -> JOptionPane.showMessageDialog(null, "Ennis selected");
+                    case 3 -> JOptionPane.showMessageDialog(null, "Shannon selected");
+                    case 4 -> JOptionPane.showMessageDialog(null, "Foynes selected");
+                    default -> JOptionPane.showMessageDialog(null, "Invalid option selected");
+                }
+                double battery = Double.parseDouble(JOptionPane.showInputDialog("Enter the battery size of the Electric vehicle")); // Get the battery size of the vehicle
+                int range = Integer.parseInt(JOptionPane.showInputDialog("Enter the range of the Electric vehicle")); // Get the range of the vehicle
+                int efficiency = Integer.parseInt(JOptionPane.showInputDialog("Enter the efficiency of the Electric vehicle")); // Get the efficiency of the vehicle
+                SmartElectric vehicle = new SmartElectric(id, regNo, manufacturer, model, LocalDate.now(), location, battery, range, efficiency); // Create a new vehicle object
                 electricVehicles.add(vehicle); // Add the vehicle to the electricVehicles list
                 JOptionPane.showMessageDialog(null, "Electric Vehicle added successfully"); // Display a message to confirm the vehicle has been added
                 System.out.println(electricVehicles);
@@ -269,8 +350,20 @@ public class Main {
                 String model = JOptionPane.showInputDialog("Enter the model of the Van vehicle"); // Get the model of the vehicle
                 String regNo = JOptionPane.showInputDialog("Enter the registration number of the Van vehicle"); // Get the registration number of the vehicle
                 String manufacturer = JOptionPane.showInputDialog("Enter the manufacturer of the Van vehicle"); // Get the manufacturer of the vehicle
-                String location = JOptionPane.showInputDialog("Enter the location of the Van vehicle"); // Get the location of the vehicle
-                SmartVan vehicle = new SmartVan(id, model, regNo, manufacturer, LocalDate.now(), location, 1.0, 100); // Create a new vehicle object
+                String[] location = {"Nenagh", "Limerick", "Ennis", "Shannon", "Foynes"}; // Get the location of the vehicle
+                int LocationChoice = JOptionPane.showOptionDialog(null, "Select a location", "Add Vehicle",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, location, location[0]); // Display the vehicle types
+                switch (LocationChoice) {
+                    case 0 -> JOptionPane.showMessageDialog(null, "Nenagh selected");
+                    case 1 -> JOptionPane.showMessageDialog(null, "Limerick selected");
+                    case 2 -> JOptionPane.showMessageDialog(null, "Ennis selected");
+                    case 3 -> JOptionPane.showMessageDialog(null, "Shannon selected");
+                    case 4 -> JOptionPane.showMessageDialog(null, "Foynes selected");
+                    default -> JOptionPane.showMessageDialog(null, "Invalid option selected");
+                }
+                double engine = Double.parseDouble(JOptionPane.showInputDialog("Enter the engine size of the City vehicle")); // Get the engine size of the vehicle
+                int co2 = Integer.parseInt(JOptionPane.showInputDialog("Enter the CO2 emissions of the City vehicle")); // Get the CO2 emissions of the vehicle
+                SmartVan vehicle = new SmartVan(id, model, regNo, manufacturer, LocalDate.now(), location, engine, co2); // Create a new vehicle object
                 vanVehicles.add(vehicle); // Add the vehicle to the vanVehicles list
                 JOptionPane.showMessageDialog(null, "Van Vehicle added successfully"); // Display a message to confirm the vehicle has been added
                 System.out.println(vanVehicles);
@@ -279,13 +372,3 @@ public class Main {
         }
     }
 }
-
-
-//
-//int ID = Integer.parseInt(JOptionPane.showInputDialog("Enter the ID of the vehicle")); // Get the ID of the vehicle
-//String model = JOptionPane.showInputDialog("Enter the model of the vehicle"); // Get the model of the vehicle
-//String regNo = JOptionPane.showInputDialog("Enter the registration number of the vehicle"); // Get the registration number of the vehicle
-//String manufacturer = JOptionPane.showInputDialog("Enter the manufacturer of the vehicle"); // Get the manufacturer of the vehicle
-//String location = JOptionPane.showInputDialog("Enter the location of the vehicle"); // Get the location of the vehicle
-//int vehicleId = fleet.size() + 1; // Generate a vehicle number
-//        JOptionPane.showMessageDialog(null, "Vehicle added successfully"); // Display a message to confirm the vehicle has been added

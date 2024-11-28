@@ -1,6 +1,7 @@
 package Data;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 //Smart City, SmartTripper, SmartVan are all the same, different hourly and daily rates.
 
 public class SmartTripper extends Petrol{
@@ -8,8 +9,8 @@ public class SmartTripper extends Petrol{
     private static final double DAILY_RATE = 60; //Daily rate
 
 
-    public SmartTripper(int id, String model, String regNo, String manufacturer, LocalDate regDate, String location, double engine, int co2) { //Constructor
-        super(id, model, regNo, manufacturer, regDate, location, engine, co2); //Constructor
+    public SmartTripper(int id, String model, String regNo, String manufacturer, LocalDate regDate, String[] location, double engine, int co2) { //Constructor
+        super(id, model, regNo, manufacturer, regDate, new String[]{Arrays.toString(location)}, engine, co2); //Constructor
     }
 
     @Override

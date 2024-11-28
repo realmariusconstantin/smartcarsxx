@@ -1,13 +1,14 @@
 package Data;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class SmartCity extends Petrol{
  private static final double HOURLY_RATE = 11; //Hourly rate
  private static final double DAILY_RATE = 55; //Daily rate
 
- public SmartCity(int id, String model, String regNo, String manufacturer, LocalDate regDate, String location, double engine, int co2) {//Constructor
-     super(id, model, regNo, manufacturer, regDate, location, engine, co2);
+ public SmartCity(int id, String model, String regNo, String manufacturer, LocalDate regDate, String[] location, double engine, int co2) {//Constructor
+     super(id, model, regNo, manufacturer, regDate, new String[]{Arrays.toString(location)}, engine, co2);
  }
 
 
